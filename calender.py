@@ -1,4 +1,7 @@
-
+#September 12, 2018
+#This program will tell you what day of the week a date is when you put in the month, day and year.
+#0=Sunday, 1=Monday, and so forth.
+#Sources: none
 
 import sys 
 month = sys.argv[1] 
