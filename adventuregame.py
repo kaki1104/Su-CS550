@@ -24,13 +24,43 @@ def menu () :
 		print ("I don't really know how to make "+recipe+"...")
 		menu ()
 
-def salad()
+def cutting () :
+	cut = input ("now you have to cut them by hitting c on the keyboard five times, quickly!")
+	cut = str(cut)
+	if cut == "ccccc" :
+		 print ("okay, good. let's move on.")
+	else : 
+		 print ("You didn't cut it the right way. Try again.")
+		 cutting()
+
+def saladbase ():
+	greens = input ("What greens do you want as your salad base? It looks like you have lettuce, spinach, kale, and arugula in the fridge.")
+	if greens == "lettuce" or greens =="spinach" or greens =="kale" or greens =="arugula" :
+		input ("taking out "+greens+" from the fridge...")
+		cutting ()
+	else :
+		print ("I don't think it's a good idea...")
+		saladbase ()
+
+def saladtopping () :
+	topping = input ("Do you want toppings? Type yes or no.")
+	if topping == "yes" :
+		toppings = input ("Let's see what you have in the fridge... You have tomato, cucmber, avocado, onion, carrot, tofu, bacon.")
+	elif topping == "no" : 
+		input ("wait, but you're still going to be super hungry...")
+		saladtopping ()
+	else :
+		input ("Please type yes or no.")
+		saladtopping()
+
+
+
+
+def salad() :
 	input ("feeling healthy, huh?")
-	ingredient1 = input ("What should you cut first? (enter hint if you can't get it right)")
-	if ingredient == lettuce
-		input ("taking out letuce from the fridge...")
-
-
+	saladbase()
+	input ("Phew. now you get to choose your toppings.")
+	saladtopping ()
 
 
 menu()
