@@ -40,10 +40,11 @@ def start () :
 
 
 def cutting () :
+	clear ()
 	from timeit import default_timer as timer
 	input ("\nNow you have to cut them by hitting c on the keyboard five times and hit enter. Make sure to do it fast.\n Are you ready?[Press Enter]")
 	start = timer()
-	cut = input ("Go!")
+	cut = input ("Go! ")
 	end = timer ()
 	if cut == "ccccc" :
 		if float(end - start) <= 3 :
@@ -53,7 +54,8 @@ def cutting () :
 			print ("Oops, you were a little clumsy. The cutting wasn't good enough.[Press Enter]")
 			cutting ()
 	else : 
-		 print ("You didn't cut it the right way. Try again.")
+		 delay_print ("You didn't cut it the right way........")
+		 input ("\nTry again. [Press enter]")
 		 clear ()
 		 cutting()
 
@@ -63,6 +65,7 @@ def showhunger () :
 	input ("Your hunger level is "+hungerlevel+" now. [Press Enter]")
 
 def saladbase ():
+	clear ()
 	delay_print ("\nWhat greens do you want as your salad base?")
 	greens = input ("\nIt looks like you have lettuce, spinach, kale, and arugula in the fridge. All of these will decrease your hunger level by -2. \n Enter a salad base: ")
 	if greens == "lettuce" or greens =="spinach" or greens =="kale" or greens =="arugula" :
@@ -76,90 +79,106 @@ def saladbase ():
 
 def meatchoice () :
 	clear ()
-	delay_print ("I think we need some protein.")
-	meat = input ("\nDo you want chicken, pork, or beef? These will all decrease your hunger level by 3. \n Enter chicken, pork, beef, or I am vegetarian:")
+	delay_print ("I think we need some protein......   ")
+	meat = input ("\nDo you want chicken, pork, or beef? These will all decrease your hunger level by 3. \n Enter chicken, pork, beef, or I am vegetarian: ")
 	if meat == "chicken" or meat == "pork" or meat == "beef" :
-		input ("Okay. Let's get some "+meat+" out of the fridge.")
+		delay_print ("Okay. Let's get some "+meat+" out of the fridge..........")
 		global hungerlevel 
 		cutting ()
 		hungerlevel = int (hungerlevel) - 3
 		showhunger ()
 		clear ()
 	elif str.lower (meat) == "i am vegetarian" :
-		input ("Let's just get some other stuff in then.")
+		input ("Let's just get some other stuff in then. [Press enter]")
 	else :
-		input ("Please enter a valid command.")
+		input ("Please enter a valid command. [Press enter]")
 		meatchoice ()
 
-def toppingchoice () :
-	clear ()
-	topping = input ("Do you want toppings? \nType yes or no:")
-	if topping == "yes" : 
-		input ("Let's see what you have in the fridge... You have tomato, cucumber, avocado, onion, carrot, tofu. [Press enter]")
-		top1, top2 = input("You can choose two toppings. \n Enter two toppings and split them by a space:").split()
+def toppingchoice() :
+	top1, top2 = input ("You can choose two toppings. \n Enter two toppings and split them by a space: ").split()
+	try: 
 		if (top1 == "tomato" or top1== "cucumber" or top1 == "avocado" or top1 =="onion" or top1 == "carrot" or top1 == "tofu") and (top2 == "tomato" or top2== "cucumber" or top2 == "avocado" or top2 =="onion" or top2 == "carrot" or top2 == "tofu") :
 			if top1 == top2 :
 				print ("okay. I guess you like "+top1+" a lot.")
 				global hungerlevel 
 				hungerlevel = int (hungerlevel) - 2
-			elif top1 != top2 :
+			else :
 				input (""+top1+" and " +top2+" seem like good choices!")
 				hungerlevel = int (hungerlevel) - 2
 		else :
 			input ("Please enter two valid toppings.")
 			toppingchoice ()
-	elif topping == "no" : 
+	except ValueError :
+		toppingchoice ()
+
+def topping () :
+	clear ()
+	top = input ("Do you want toppings? \nType yes or no: ")
+	if top == "yes" : 
+		delay_print ("Let's see what you have in the fridge.........   ")
+		input ("You have tomato, cucumber, avocado, onion, carrot, tofu. [Press enter]")
+		toppingchoice()
+		
+	elif top == "no" : 
 		input ("Okay, you don't really like toppings I guess. [no change in hunger level] [Press enter]")
 	else :
 		delay_print ("uh...what?")
 		toppingchoice()
 
 
-def salad() :
-	delay_print ("Feeling healthy, huh?")
-	saladbase()
-	input ("Phew. Now you get to choose your toppings. [Press enter]")
-	meatchoice ()
-	toppingchoice ()
 
 def sandwichbase () :
-	input ("let's choose what type of bread to use.")
-	bread = input ("What greens do you want as your salad base? It looks like you have whole grain, whole wheat, multi grain, and rye. (hunger level -2) \nEnter a bread type:")
+	clear ()
+	input ("Let's choose what type of bread to use. [Press enter]")
+	bread = input ("What type of bread do you want to use for your sandwich? It looks like you have whole grain, whole wheat, multi grain, and rye. All of these will decrease your hunger level by -5. \nEnter a bread type: ")
 	if bread == "whole grain" or bread =="whole wheat" or bread == "multi grain" or bread =="rye" :
-		delay_print ("taking out "+bread+" bread from the fridge...")
+		delay_print ("taking out "+bread+" bread from the fridge.............")
 		cutting ()
 		global hungerlevel 
 		hungerlevel = int (hungerlevel) - 5
 		showhunger ()
 	else :
-		delay_print ("I don't think it's a good idea...")
+		delay_print ("I don't think it's a good idea.........")
 		sandwichbase ()
 
-def sandwich ():
-	delay_print ("You're pretty hungry, aren't you?")
-	sandwichbase ()
-	input ("Now you get to choose what to put inside.")
+def salad() :
+	clear ()
+	input ("Feeling healthy, huh? [Press enter]")
+	saladbase()
+	delay_print ("Phew. Now you get to choose your toppings......         ")
 	meatchoice ()
-	toppingchoice()
+	topping () 
+
+def sandwich ():
+	clear ()
+	delay_print ("You're pretty hungry, aren't you?         ")
+	sandwichbase ()
+	input ("Now you get to choose what to put inside. [Press enter]")
+	meatchoice ()
+	topping()
 
 
 def result ():
 	clear ()
-	input ("Yumyumyum! You enjoyed your food. [Press Enter]") 
+	delay_print ("Yumyumyumyumyumyum........................")
+	input ("You enjoyed your food! [Press Enter]") 
 	clear ()
 	showhunger ()
 	clear ()
 	if  -2 <= int (hungerlevel) <= 2 :
-		print ("You have successfully satisfied your hunger! Congrats!")
+		delay_print ("You have successfully satisfied your hunger! Congrats!")
 	elif -2 >= int (hungerlevel) :
-		print ("Oops... I think you ate too much. You're feeling kinda gross. Be careful next time!")
+		delay_print ("Oops... I think you ate too much. You're feeling kinda gross. Be careful next time!")
 	elif 2 <= int (hungerlevel) :
-		input ("Oops... I think you ate too little. You're still hungry...")
-		tryagain = input ("Do you want to try again?")
-		if tryagain == "yes" :
+		delay_print("Oops... I think you ate too little. You're still hungry...")
+		tryagain = input ("\n Do you want to try again? \n Enter yes or no:")
+		if lower(tryagain) == "yes" :
+			input ("I like your guts! Let's play again!")
 			system ()
+		elif lower(tryagain) == "no":
+			input ("Oh well. I will see you next time.")
 		else :
-			print ("ok, whatever. babai.")
+			print ("Huh?  Whatever. babai.")
 		
 	
 
@@ -170,7 +189,7 @@ def system () :
 
 	loop = 1
 	while loop == 1:
-		recipe = input (" \nYou can make a salad (decreases hunger level by 2-7) or a sandwich (decreases hunger level by 5-10). \n  Enter salad or sandwich:")
+		recipe = input (" \nYou can make a salad (decreases hunger level by 2-7) or a sandwich (decreases hunger level by 5-10). \n  Enter salad or sandwich: ")
 
 		if str.lower(recipe) == "salad":
 			salad ()

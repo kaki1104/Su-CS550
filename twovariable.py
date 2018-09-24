@@ -1,8 +1,7 @@
-import time
-import sys
+topping = input ("Choose topping:")
 
-def delay_print(s):
-    for c in s:
-        sys.stdout.write(c)
-        sys.stdout.flush()
-        time.sleep(0.25)
+topping.find (“ “, 0, len(topping)
+if .find == -1 :
+	print ("not a valid input")
+else : 
+	input ("You can choose two toppings. \n Enter two toppings and split them by a space:").split()
