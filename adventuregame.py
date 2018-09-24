@@ -1,5 +1,5 @@
 #Kaki Su
-#September 17, 2018
+#September 23, 2018
 #Description: In this game, you will make a salad or a sandwich to satisfy your hunger level, which is assigned randomly in the beginning of the game. Your choices in the ingredients will affect how much satisfaction you will get, and your goal is to not be too full, but also not too hungry. While making food, the user must also perform certain tasks such as cutting food through pressing the keyboard quickly. 
 #sources: 
 #how to measure time used to perform a function: https://stackoverflow.com/questions/7370801/measure-time-elapsed-in-python
