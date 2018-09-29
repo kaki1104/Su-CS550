@@ -7,8 +7,8 @@ a = []
 a.append (4) 
 a.append (5)
 a.append (3)
-a.insert (0,1)
-a = [1] + a
+a.insert (2,1)
+a = [2] + a
 
 #print (a [0], a[4], a[7])
 
