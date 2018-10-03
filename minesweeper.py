@@ -3,8 +3,8 @@
 import sys
 import random
 
-w = int (sys.argv [1])+2
-h = int (sys.argv [2])+2
+w = int (sys.argv [1]) + 2
+h = int (sys.argv [2]) + 2
 b = int (sys.argv [3])
 
 if b >= w * h :
