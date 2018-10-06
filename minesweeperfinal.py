@@ -74,6 +74,7 @@ def main () :
 			print("")
 
 	def showl() :
+		clear ()
 		for y in range (1,w-1) :
 			for x in range (1,h-1) :
 				print (l[x][y],end=" ")
@@ -88,7 +89,7 @@ def main () :
 			delay_print ("See you next time!\n")
 			quit()
 		else: 
-			delay_print ("Please enter yes or no.")
+			delay_print ("Please enter yes or no. ")
 			tryagain ()
 
 	def action() :
@@ -139,8 +140,7 @@ def main () :
 													m[x+1][y+1] = l[x+1][y+1]
 										i = i + 1 
 									action ()
-								else : # if the user reveals a bomb
-									clear ()
+								else : # if the user reveals a bomb = game over
 									showl () #will show the solution like the original minesweeper game
 									delay_print ("You've hit the bomb! Game over!\n")
 									tryagain ()
