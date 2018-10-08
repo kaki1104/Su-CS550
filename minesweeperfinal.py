@@ -1,6 +1,6 @@
 #Kaki Su
 #October 5th, 2018
-#This is a minesweeper game.
+#This is a minesweeper game. You can select the size of the board and the number of bombs you would like the system to have. You can either reveal or flag a grid. A safely revealed grid will show the number of bombs around that grid, and you should flag the grid that you suspect a bomb on. You lose when you reveal a bomb, and you will win when you flag and reveal all the grids correctly.
 #sources: How to replace an eleent in a 2d list: https://stackoverflow.com/questions/36695422/replace-an-element-in-a-2d-list
 #comparing two lists: https://www.quora.com/How-can-I-do-a-comparison-of-two-lists-in-Python-with-each-value
 #How to clear the terminal: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-consoles
