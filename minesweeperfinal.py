@@ -44,7 +44,7 @@ def main () : #the main function, including definitions
 		x = random.randint (1, w-2)
 		y = random.randint (1, h-2)
 		l[x][y] = str("*")
-		loop = loop + 1 
+		loop = loop + 1
 
 	for y in range (1,w-1) : #looks around the bomb and adds number around the bomb to show how many bombs are adjacent to each grid
 		for x in range (1,h-1) :
@@ -83,9 +83,9 @@ def main () : #the main function, including definitions
 	def tryagain () : #gives user the option to play the game again no matter if they win or lose.
 		delay_print ("Would you like to play again?")
 		yesorno = input ("\nEnter yes or no: ")
-		if yesorno == "yes" :
+		if str.lower (yesorno) == "yes" :
 			main ()
-		elif yesorno == "no" :
+		elif str.lower (yesorno) == "no" :
 			delay_print ("See you next time!\n")
 			quit()
 		else: 
@@ -94,34 +94,34 @@ def main () : #the main function, including definitions
 
 	def action() : #routine of revealing/flagging grids
 		try:
-			showm ()
+			showm () #shows user board on top of terminal
 			for y in range (1,w-1) :
 				for x in range (1,h-1) : #goes through all numbers on board
-					if m[x][y] != l[x][y] :
+					if m[x][y] != l[x][y] : #as long as the two boards are not identical, it will repeat the action
 						revealflag, x, y = input ("You can choose a space to either reveal or flag. \nEnter the row, column and either reveal or flag, each split by a space (ex. flag 1 1, reveal 2 3): ").split()
 						x = int (x)
-						y = int (y) #converting values into integars so taht it's compatible with below equations
+						y = int (y) #converting values into integars so that it's compatible with below equations
 						if x > (w-2) or x < 1 or y > (h-2) or y <1 : #if the user input is out of the board range 
 							delay_print ("You can only select a number up to the board size. Try again.")
 							input (" [Press Enter]")
 							action ()
-						elif revealflag == "flag" : #scenarios when the user flags a position within range
+						elif str.lower(revealflag) == "flag" : #scenarios when the user flags a position within range
 							if m[x][y] == "□" :
 								m[x][y] = str("*")
 								action ()
 							elif m[x][y] == "*" : #can't flag twice
 								delay_print ("You already flagged that position.")
 								deflag = input ("\nWould you like to de-flag that space?\nType yes or no: ")
-								if deflag == "no" :
+								if str.lower(deflag) == "no" :
 									action ()
-								elif deflag == "yes" : #makes it back to original
+								elif str.lower(deflag) == "yes" : #makes it back to original
 									m[x][y] = "□"
 									action ()
 							else:
 								delay_print ("You already revealed this position, so you can't flag it. Try again.")
 								input (" [Press Enter]")
 								action ()
-						elif revealflag == "reveal" : #scenarios when the user reveals a position within range
+						elif str.lower(revealflag) == "reveal" : #scenarios when the user reveals a position within range
 							if m [x][y] == "□" : #when the board is not yet revealed
 								if l[x][y] != "*" : #when user is trying to reveal a number
 									m[x][y] = l[x][y] #reveals solution for selected grid
@@ -158,7 +158,7 @@ def main () : #the main function, including definitions
 			delay_print ("Are you sure you entered the command the right way? Try again.")
 			input (" [Press Enter]")
 			action ()
-		except IndexError: #when your user enter something else wrong
+		except IndexError: #when your user enter something else wrong at commandline
 			delay_print ("Are you sure your position was in the right range? Try again.")
 			input (" [Press Enter]")
 			action ()
