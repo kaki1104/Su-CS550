@@ -21,7 +21,7 @@ def delay_print(s): #function that pauses a little between each letter so that i
         sys.stdout.flush()
         time.sleep(0.03)
 
-def main () :
+def main () : #the main function, including definitions
 	try: 
 		w = int (sys.argv [1]) + 2
 		h = int (sys.argv [2]) + 2
@@ -66,14 +66,14 @@ def main () :
 				if l[x-1][y-1] != "*" :
 					l[x-1][y-1] = int(l[x-1][y-1]) + 1
 
-	def showm () :
+	def showm () : #shows user board
 		clear ()
 		for y in range (1,w-1) :
 			for x in range (1,h-1) :
 				print (m[x][y],end=" ")
 			print("")
 
-	def showl() :
+	def showl() : #shows solution board
 		clear ()
 		for y in range (1,w-1) :
 			for x in range (1,h-1) :
@@ -92,7 +92,7 @@ def main () :
 			delay_print ("Please enter yes or no. ")
 			tryagain ()
 
-	def action() :
+	def action() : #routine of revealing/flagging grids
 		try:
 			showm ()
 			for y in range (1,w-1) :
@@ -100,8 +100,8 @@ def main () :
 					if m[x][y] != l[x][y] :
 						revealflag, x, y = input ("You can choose a space to either reveal or flag. \nEnter the row, column and either reveal or flag, each split by a space (ex. flag 1 1, reveal 2 3): ").split()
 						x = int (x)
-						y = int (y)
-						if x > (w-2) or x < 1 or y > (h-2) or y <1 : #if the user input is out of range
+						y = int (y) #converting values into integars so taht it's compatible with below equations
+						if x > (w-2) or x < 1 or y > (h-2) or y <1 : #if the user input is out of the board range 
 							delay_print ("You can only select a number up to the board size. Try again.")
 							input (" [Press Enter]")
 							action ()
@@ -154,11 +154,11 @@ def main () :
 							action()
 			delay_print ("Congrats! You beat the game!\n")
 			tryagain ()
-		except ValueError :
+		except ValueError : #when user enter a string or incorrect number of arguments etc
 			delay_print ("Are you sure you entered the command the right way? Try again.")
 			input (" [Press Enter]")
 			action ()
-		except IndexError:
+		except IndexError: #when your user enter something else wrong
 			delay_print ("Are you sure your position was in the right range? Try again.")
 			input (" [Press Enter]")
 			action ()
