@@ -1,5 +1,7 @@
-from PIL import Image, ImageDraw
-#source: importing ImageDraw: https://code-maven.com/create-images-with-python-pil-pillow
+#Kaki Su
+#this will display a gradient image from red to black sized 512 x 512
+
+from PIL import Image
 
 imgx = 512
 imgy = 512
