@@ -10,7 +10,7 @@ image = Image.new ('RGB', (imgx, imgy))
 
 for y in range (imgy) :
 	for x in range (imgx) :
-
+		
 		r = (x/512) * 255 #dividing the x axis by 255, thus converting x position to 255 scale so that each pixel (s) correspond to a R value. 
 		image.putpixel((x, y), (int(r), 0, 0))
 
