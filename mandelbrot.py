@@ -8,16 +8,16 @@ image = Image.new ('RGB', (imgx, imgy))
 
 max = 255
 
-ax = -0.5
-ay = 1
-bx = -2
-by = 0.5
+x1 = -0.5
+x2 = 1
+y1 = -2
+y2 = 0.5
 
 for y in range(imgy):
-    zy = y * (ax - ay) / imgy 
+    z1 = y * (y1 - y2) / imgy 
     for x in range(imgx):
-        zx = x * (bx - by) / imgx 
-        z = zx + zy * 1j
+        z2 = x * (x1 - x2) / imgx 
+        z = z1 + z2*1j
         c = z
         for i in range(max):
             if abs(z) > 2.0: 
