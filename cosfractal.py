@@ -25,5 +25,4 @@ for y in range(imgy):
         b = (x/imgy) * 255
         image.putpixel((x, y), (r, int(g), int(b)))
 
-image.save ("mandelbrot.png", "PNG")
-
+image.save ("cosfractal.png", "PNG")
