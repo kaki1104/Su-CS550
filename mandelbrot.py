@@ -3,7 +3,8 @@
 #This program will generate three png pictures of uniquely zoomed and colored fractals. The first two are mandelbrot sets, and the last one is julia set.
 #References: 
 #about julia set: https://www.dropbox.com/s/tie5910sltnkxq3/mandelbrot_reading.pdf?dl=0
-
+#I have neither given nor received unauthorized aid.
+#Jiaqi Su
 
 from PIL import Image
 
