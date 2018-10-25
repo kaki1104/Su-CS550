@@ -85,10 +85,10 @@ def julia() :
             for i in range(max):# the third degree julia set function z = z**3+c will continue until its absolute value reaches 2.0 for every number up till the max iteration stated above
                 if abs(z) >= 2.0:  
                     break 
-                z = z ** 3 + c #third power julia set
+                z = z ** 3 + c #third power julia set, allowing a twisted image.
             r = i % 256 #the red is the defult color fr the swirling shape itself.
-            g = (y/imgy) * 255 #the intensity of g increases as it goes from top to bottom
-            b = (x/imgy) * 255 #the intensity of b increases as it goes from left to right
+            g = (y/imgy) * 255 #the value of g increases as it goes from top to bottom
+            b = (x/imgy) * 255 #the value of b increases as it goes from left to right
             image.putpixel((x, y), (r, int(g), int(b)))
 
     image.save ("julia.png", "PNG") # saves the generated image as julia.png
@@ -96,4 +96,4 @@ def julia() :
 mandel1 ()
 mandel2 ()
 julia ()
-
+#calls the three commands, creating two different pictures.
