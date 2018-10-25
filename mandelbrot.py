@@ -69,7 +69,7 @@ def mandel2 () : #the second Mandelbrot Set
 
     image.save ("mandel2.png", "PNG") #saves the generated image as mandel2.png
 
-def julia() :
+def julia() : #An image created by julia set. This fractal is very similar to mandelbrot set, except the initial value c is different. So instead  of having z = c like the mandelbrot set, I referred to the sources in dropbox and found an initial value that showed an interesting image. Although not necessary, this particular julia set is to the third degree.
 
     image = Image.new ('RGB', (imgx, imgy))
 
