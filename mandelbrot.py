@@ -3,6 +3,7 @@
 #This program will generate three png pictures of uniquely zoomed and colored fractals. The first two are mandelbrot sets, and the last one is julia set.
 #References: 
 #about julia set: https://www.dropbox.com/s/tie5910sltnkxq3/mandelbrot_reading.pdf?dl=0
+#mandelbrot set explorer: https://www.atopon.org/mandel/#
 #I have neither given nor received unauthorized aid.
 #Jiaqi Su
 
@@ -18,8 +19,7 @@ def mandel1 () : #the first Mandelbrot Set
 
     x1, x2 = 0.2625, 0.2698 #the zoomed x axis
     y1, y2 = -0.983, -0.976 #the zoomed y axis
-    #these coordinates combined generates a swirling figure with its center point roughly positioned at the middle of the picture
-        
+    #these coordinates combined generates a swirling figure with its center point intentionally positioned at the middle of the picture.
     for y in range(imgy):
         z1 = y * (y2 - y1) / (imgy-1) + y1
         for x in range(imgx):
