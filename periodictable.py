@@ -1,5 +1,7 @@
-#periodictable.py
-#https://stackoverflow.com/questions/3944655/testing-user-input-against-a-list-in-python
+#Kaki Su and Stephanie Hotz
+#This program contains a dictionary of periodic table, including each element's name, symbol, number and weight. It can display other traits of that element if you enter one of the information. It can also add the weights together and give you the weight of a molecule when you enter its formula.
+#Sources: https://stackoverflow.com/questions/3944655/testing-user-input-against-a-list-in-python
+#I have neither given nor received unauthorized aid. Jiaqi Su
 
 class Element :
 	
