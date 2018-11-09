@@ -25,15 +25,15 @@ def main () :
 		allelements.append(Element(part[0],part[1],part[2],part[3]))
 	while True : 
 		info = input ("\nEnter an element name, number, symbol, or weight: ")
-		for e in allelements : 
-			if info == e.element :
-				print (allelements[2])
+		for e in allelements :
+			if e.element == info :
+				print (allelements[int((e.number))])
 			elif e.number == info:
 				print (allelements[int(info)])
-			#elif e.symbol == info:
-				#print ("success!")
-			#elif e.weight == info:
-				#print ("success!")
+			elif e.symbol == info:
+				print (allelements[int((e.number))])
+			elif e.weight == info:
+				print (allelements[int((e.number))])
 
 
 main ()
