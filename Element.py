@@ -1,5 +1,5 @@
 
-class Element :	
+class Element :	#this Element class defines 
   
 	def __init__ (self, element, number, symbol, weight) :
 		self.element = element
