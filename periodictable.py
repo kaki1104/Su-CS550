@@ -1,39 +1,49 @@
-#Kaki Su and Stephanie Hotz
-#This program contains a dictionary of periodic table, including each element's name, symbol, number and weight. It can display other traits of that element if you enter one of the information. It can also add the weights together and give you the weight of a molecule when you enter its formula.
-#Sources: https://stackoverflow.com/questions/3944655/testing-user-input-against-a-list-in-python
-#I have neither given nor received unauthorized aid. Jiaqi Su
+import re
+from Element import Element
 
-class Element :
-	
-	def __init__ (self, element, number, symbol, weight) :
-		self.element = element
-		self.number = number
-		self.symbol = symbol
-		self.weight = weight
+class PeriodicTable:
 
-	def __str__ (self) : 
-		return "\nInformation about " + self.element + " (" + self.symbol + ") :\nAtomic Number: " + self.number + "\nAtomic Weight: " + self.weight + "u"
+	def __init__ (self, pfile):
+		self.allelements = {}
+		file = open('elements.csv')
+		for line in file:
+			part = line.split(',')
+			oneelement = Element(part[0], part[1], part[2], part[3])
+			self.allelements[part[2]] = oneelement	
 
+'''	def display (self, info) :
+		for info in allelements 
+		if str.lower(self.element) == str.lower(info) or .number == info or str.lower(e.symbol) == str.lower(info) or e.weight == info :
+				return (self.allelements[int(e.number)]) '''
+
+	def calcWeight(self, compound):
+		matcher = re.compile('([A-Z][a-z]*)([0-9]*)')
+		parts = re.findall(matcher, compound)
+		totalWeight = 0
+
+		for part in parts: 
+
+			if part[1]:	
+				multiplier = float(part[1])
+
+			else:
+				multiplier = 1
+
+			element = self.allelements.get(part[0])
+			#adderrorcheckinghere
+			weightofElement = element.getWeight()
+			totalWeight = float(totalWeight) + float(weightofElement) * float(multiplier)
+		return totalWeight
+
+
+	def calcMoles(self, compound, grams):
+		
+		return float(grams)/self.calcWeight(compound)
+  
+	def __str__ (self) :
+		info = ""
+		for e in self.allelements :
+			info = str (e)
+		return info
+  
 	__repr__ = __str__
-
-
-def main () :
-	file = open('elements.csv')
-	allelements=[]
-	for line in file:
-		part = line.split(',')
-		allelements.append(Element(part[0],part[1],part[2],part[3]))
-	while True : 
-		info = input ("\nEnter an element name, number, symbol, or weight: ")
-		for e in allelements :
-			if e.element == info :
-				print (allelements[int((e.number))])
-			elif e.number == info:
-				print (allelements[int(info)])
-			elif e.symbol == info:
-				print (allelements[int((e.number))])
-			elif e.weight == info:
-				print (allelements[int((e.number))])
-
-
-main ()
