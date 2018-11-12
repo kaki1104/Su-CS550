@@ -27,7 +27,25 @@ class PeriodicTable:
 			oneelement = Element(part[0], part[1], part[2], part[3]) # In this, the object from Class Element is intialized and set into a dictionary with the chemical symbol as the key for each element.	
 			self.allelements[part[2]] = oneelement	
 
+	def __str__ (self) : #This defines the string of all of the elements
+		info = ""
+		for e in self.allelements :
+			info = str (e)
+		return info
+  
+	__repr__ = __str__
+
 #FUNCTIONS
+	def display (self,given) :
+
+		for symbol, element in self.allelements.items(): #This goes through the dictionary of elements and labels them as symbol, element
+			if given in (element.getWeight(),element.getSymbol(),element.getNumber(),element.getElement()): #This checks to see if the given is equal to any of the element's attributes.
+				return (element) #If it is, it will return the element.
+			elif str.lower(given) in (str.lower(element.getSymbol()),str.lower(element.getElement())): #This will return the element even if the user enters the information in lower case
+				return (element) 
+			elif symbol == 'Lr' and given not in (element.getWeight(),element.getSymbol(),element.getNumber(),element.getElement()):
+				return ("\u001b[31m"+ given + " is not a valid element attribute. Please try again.\u001b[0m")
+
 	def calcWeight(self, compound) : # This funtion gives the atomic weight of a compund
 
 		checker = '' # This checker will be used later to check if the compound calculated is the same as the one entered.
@@ -46,7 +64,7 @@ class PeriodicTable:
 			element = self.allelements.get(part[0]) # This retrieves the element from the dictionary using the chemical symbol key that was given in the compound and labeled as part[1].
 
 			if not element: # This is some error checking to account for things that look like element (Egg, Pn, etc.)
-				return (part[0]+" is not a valid element in your compound. Please try again.")
+				return ("\u001b[31m" + part[0]+ " is not a valid element in your compound. Please try again.\u001b[0m")
 
 			weightofElement = element.getWeight() #The weight is set to the weight that was retrieved from the dictionary by using the getWeight() function from the Element Class.
 
@@ -58,11 +76,15 @@ class PeriodicTable:
 		if checker == compound: #This checks if the compound that was calculated is the one entered
 			return str(totalWeight)
 		else:
-			return("You entered an invalid compound. Please try again.")
+			return("\u001b[31mYou entered an invalid compound. Please try again.\u001b[0m")
+
+	def calcMoles(self, compound, grams) :	#This Calculates the moles that are in a number of grams of a compund.
+		moles = float(grams)/float(self.calcWeight(compound))
+		return str(moles) + " mols" #The grams of the element are given by the user and divided by atomic weight found by the calcWeight function. 
 
 	def nearestWeight(self, weight): #This Function finds the element with the nearest weight to the one entered
 
-		lowest = float(1000) #Initializing lowest as an impossibly high number, so the new number will definetly be lesser.
+		lowest = float(10000) #Initializing lowest as an impossibly high number, so the new number will definetly be lesser.
 
 		lowestElement = '' #Initializing the element
 
@@ -74,26 +96,3 @@ class PeriodicTable:
 				lowestElement = element
 
 		return lowestElement  #This returns the element that had the closest atomic weight to the one entered
-
-	def display (self,given) :
-
-		for symbol, element in self.allelements.items(): #This goes through the dictionary of elements and labels them as symbol, element
-			if given in (element.getWeight(),element.getSymbol(),element.getNumber(),element.getElement()): #This checks to see if the given is equal to any of the element's attributes.
-				return (element) #If it is, it will return the element.
-			elif str.lower(given) in (str.lower(element.getSymbol()),str.lower(element.getElement())): #This will return the element even if the user enters the information in lower case
-				return (element) 
-			elif symbol == 'Lr' and given not in (element.getWeight(),element.getSymbol(),element.getNumber(),element.getElement()):
-				return (given + " is not a valid element attribute. Please try again.")
-
-
-	def calcMoles(self, compound, grams) :	#This Calculates the moles that are in a number of grams of a compund.
-		moles = float(grams)/float(self.calcWeight(compound))
-		return str(moles) + " mols" #The grams of the element are given by the user and divided by atomic weight found by the calcWeight function. 
- 
-	def __str__ (self) : #This defines the string of all of the elements
-		info = ""
-		for e in self.allelements :
-			info = str (e)
-		return info
-  
-	__repr__ = __str__
