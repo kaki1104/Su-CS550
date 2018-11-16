@@ -4,7 +4,7 @@
 from PIL import Image
 import math
 
-img = Image.open("IMG_0701.jpg")
+img = Image.open("IMG_3103.jpg")
 width, height = img.size
 fil = Image.new("RGB", (width, height), "white")
 
@@ -93,14 +93,9 @@ for x in range (1, width - 1):
 		# draw the length in the edge image
 		#newpixel = img.putpixel((length,length,length))
 		fil.putpixel((x,y), ( 255-length, 255-length, 255-length))
-		if (255-length) >= 100 :
-			p = img.getpixel((x, y))
-			r = p[0]
-			g = p[1]
-			b = p[2]
-			fil.putpixel ((x,y), (r,g,b))
-		else :
+		if (255-length) <= 100 :
 			fil.putpixel ((x,y), (0,0,0))
-
+		elif (255-length) >= 200 :
+			fil.putpixel ((x,y), (255,255,255))
 
 fil.save ("filtered.png", "PNG")
