@@ -14,7 +14,7 @@ if (variableGrade == "A"):
 ''' 2. 
    Variable yards is an int. If it is less than 17, multiply yards by 2. 
 '''
- if int(yard) < 17 :
+ if yard < 17 :
  	yard = yard * 2
  
  
@@ -45,7 +45,7 @@ if (celcius == True):
    Variable numItems is an int. Variable averageCost and totalCost are floats. If there are items, calculate the average cost. If there are no items, print no items.
 '''
  
- averageCost = int(totalCost)/numItems
+ averageCost = totalCost/numItems
  if numItems <= 0 :
  	print ("no items")
  
