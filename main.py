@@ -1,3 +1,4 @@
+
 #Kaki Su and Stephanie Hotz
 #November 11, 2018
 #We recommend using a white background for the terminal so that the colors come out nicely.
