@@ -7,7 +7,7 @@ walkhome = 0
 while m < 10000:
 	n = 0 
 	place = [0, 0]
-	while n <= 19 :
+	while n <= 22 :
 
 		direction = [[1,0], [0,1], [-1,0], [0,-1]]
 		d = random.choice (direction)

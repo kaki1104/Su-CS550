@@ -14,7 +14,6 @@ for i in range (len (results)):
 	display[results[i]] += 1
 
 r = [x for x in range (11)]
-d = [x for x in range (11)]
 
 plt.bar (r, display, color = (.5, 0., .5, 1.))
 plt.ylabel ("Number of Trials")
