@@ -1,7 +1,8 @@
 #Kaki Su
 #January 15, 2019
 #This code seeks to simulate the optimal decision to make the most money out of $200 with lottery.
-#I chose to set the price as $2 because many lottery tickets in real life is that price, and set the prize 100 times the ticket value while the percentage of winning that prize is 1/100. I was curious what would happen if you would get the money back theoretically. Even if we don't 
+#I chose to set the price at $2 because many lottery tickets in real life is that price, and set the prize 100 times the ticket value while the percentage of winning that prize at 1/100. I was curious what would happen if you would get the money back theoretically. I thought that in real life, people face many similar dilemmas in dealing with theoretical values because situations like gambling blinds people's judgements and "intuitions".
+#I have neither given nor received unauthorized aid. Jiaqi Su
 
 
 import random
