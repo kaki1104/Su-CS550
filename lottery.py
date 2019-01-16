@@ -7,19 +7,19 @@
 
 import random
 
-# simulation 1 
+# simulation 1...simulates the percentage of losing (not getting the prize) after buying n number of tickets
 
 m = 0
 l = [0, 0]
 lose = 0
 prize = 200
 
-while m < 1000:
+while m < 1000: #the simulation will repeat for 1000 times
 	n = 0
 	money = 200
-	while n < 100 :
-		win = random.randint (1, 100)
-		r = random.randint (1, 100)
+	while n < 100 : # I changed this value to simulate with different number of tickets to buy
+		win = random.randint (1, 100) #the winning number
+		r = random.randint (1, 100) #the number you pick out
 		money = money - 2
 		if r == win :
 			money = money + prize
@@ -31,30 +31,30 @@ while m < 1000:
 	m = m + 1
 
 
-print (lose)
+print (lose) #the number of loses/1000 is the percent that you will not end up winning a prize after buying n number of tickets.
 
 
 
-#Simulation 2
+#Simulation 2...
 
-l = [0,0,0]
+l = [0,0,0] #[wins after buying 30, wins after buying 100 (when you lost the first 30), wins after buying 100]
 p = 0
 
-while p < 1000 :
+while p < 1000 : #simulate a thousand times
 	n = 0
 	while True :
 		win = random.randint (1, 100)
 		r = random.randint (1, 100)
 		n = n + 1
-		if n <= 30 :
+		if n <= 30 : #when you win after 30 tries
 			if r == win :
 				l[0] = l[0] + 1
 				break
-		elif 30 < n <= 100 :
+		elif 30 < n <= 100 : #when you don't win the first 30, but win within 100
 			if r == win :
 				l[1] = l[1] + 1
 				break
-		elif n > 100 :
+		elif n > 100 : #when you dont get the prize after 100 tries
 			if r == win :
 				l[2] = l[2] + 1
 				break
@@ -62,14 +62,14 @@ while p < 1000 :
 
 
 
-print (l)
+print (l) #[wins after buying 30, wins after buying 100 (when you lost the first 30), wins after buying 100]
 
 
 
-#simulation 3 
+#simulation 3... simulates the average number of money you end up with
 
 
-prize = 200
+prize = 200 
 m = 0
 total = 0
 
