@@ -1,3 +1,4 @@
+
 #Kaki Su
 #October 5th, 2018
 #This is a minesweeper game. You can select the size of the board and the number of bombs you would like the system to have. You can either reveal or flag a grid. A safely revealed grid will show the number of bombs around that grid, and you should flag the grid that you suspect a bomb on. You lose when you reveal a bomb, and you will win when you flag and reveal all the grids correctly.
