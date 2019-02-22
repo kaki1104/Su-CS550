@@ -1,8 +1,13 @@
+#Kaki Su
+#February 22, 2019
+#We recommend using a white background for the terminal so that the colors come out nicely. We also recommend using two earbuds (as opposed to just one ear) so that you 
+#This program generates jazz improvisation on the bebop scale. You can enter the chords you want, and it would generate the chords on the 
+#I have neither given nor received unauthorized aid. Jiaqi Su
 #playing audio with python: https://stackoverflow.com/questions/260738/play-audio-with-python/34179010
 #finding the index of an item: https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-given-a-list-containing-it-in-python
 #taking out value from tuple: https://stackoverflow.com/questions/11458239/python-changing-value-in-a-tuple
 #merging list: https://stackoverflow.com/questions/1720421/how-to-concatenate-two-lists-in-python
-#mixing files: https://stackoverflow.com/questions/4039158/mixing-two-audio-files-together-with-python
+#mixing wav files: https://stackoverflow.com/questions/4039158/mixing-two-audio-files-together-with-python
 
 import pysynth_b as ps
 import simpleaudio as sa
@@ -109,7 +114,7 @@ def main () :
 		#combination of all patterns
 		allbeats = fourbeats + twobeats + eighth + onebeat
 
-		
+		#below are the rules that would make up the phrases
 		n = []
 		b = 0
 		while b < beat :
@@ -123,6 +128,7 @@ def main () :
 				else:
 					phrase = random.choice (allbeats)
 
+			#limits the interval between key changes less than 4 half steps so that it sounds natural
 			if b == 0 :
 				if len(notes) != 0 :
 					if ((return_interval (phrase[0]) + 4 >= return_interval(notes[-1])) and (return_interval (phrase[0]) - 4 <= return_interval(notes[-1]))):
@@ -146,6 +152,7 @@ def main () :
 					else :
 						b = b + 4
 
+			#limits the interval between phrases less than 2 half steps so that it sounds natural
 			else:
 				if ((return_interval (phrase[0]) + 2 >= return_interval(n[-1][-1])) and (return_interval (phrase[0]) - 2 <= return_interval(n[-1][-1]))) :
 					n.append (phrase)
