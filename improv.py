@@ -93,7 +93,6 @@ def main () :
 				[(bank[k+14], 16),(bank[k+16], 16),(bank[k+14], 16),(bank[k+12], -8)],
 				[(bank[k+17], 16),(bank[k+19], 16),(bank[k+17], 16),(bank[k+15], -8)],
 
-				[(bank[k+2], 8),(bank[k-1], 16) , (bank[k], -8)],
 				[(bank[k+5], 8), (bank[k+3], 16) , (bank[k+4], -8)],
 				[(bank[k+9], 8), (bank[k+6], 16),(bank[k+7], -8)],
 				[(bank[k+14], 8),(bank[k+11], 16) , (bank[k+12], -8)],
@@ -116,22 +115,42 @@ def main () :
 
 		#below are the rules that would make up the phrases
 		n = []
+		a = 0
 		b = 0
 		while b < beat :
+
+			#picks the phrase based on how many more beats you have to fill
 			if len(c1) == totalmeasures - 1 :
 				phrase = random.choice (fourbeats)
+				#will select from fourbeats for the last phrase so that it sounds conclusive
 			else : 
 				if b == (beat - 1) :
 					phrase = random.choice (onebeat)
-				elif (b == beat -2) or (b == beat - 3) :
+				elif b == beat -2 or b == beat - 3 :
 					phrase = random.choice (onebeat + eighth + twobeats)
 				else:
 					phrase = random.choice (allbeats)
 
 			#limits the interval between key changes less than 4 half steps so that it sounds natural
-			if b == 0 :
+
+			if len (n) == 0 :
 				if len(notes) != 0 :
-					if ((return_interval (phrase[0]) + 4 >= return_interval(notes[-1])) and (return_interval (phrase[0]) - 4 <= return_interval(notes[-1]))):
+					if a < 30 :
+						if ((return_interval (phrase[0]) + 3 >= return_interval(notes[-1])) and (return_interval (phrase[0]) - 3 <= return_interval(notes[-1]))):
+							n.append (phrase)
+							if phrase in twobeats:
+								b = b + 2
+							elif phrase in eighth:
+								b = b + 2
+							elif phrase in onebeat:
+								b = b + 1
+							else :
+								b = b + 4
+
+						else :
+							a = a + 1
+					#if they couldn't find one that is within 3 intervals after 30 tries, it will expand the range
+					elif ((return_interval (phrase[0]) + 10 >= return_interval(notes[-1])) and (return_interval (phrase[0]) - 10 <= return_interval(notes[-1]))):
 						n.append (phrase)
 						if phrase in twobeats:
 							b = b + 2
@@ -141,6 +160,9 @@ def main () :
 							b = b + 1
 						else :
 							b = b + 4
+					else :
+						pass
+
 				else: 
 					n.append (phrase)
 					if phrase in twobeats:
@@ -301,8 +323,8 @@ def main () :
 
 		elif str.lower(chord) == "g" :
 			l[x][y] = "G "
-			gen_bebop(19, 4)
-			gen_chord(19)
+			gen_bebop(7, 4)
+			gen_chord(7)
 
 		elif str.lower(chord) == "g#" :
 			l[x][y] = "G#"
@@ -355,9 +377,9 @@ def main () :
 			input (" [Press Enter]")
 			action()
 
-	#asks if the user want to play the generated improv with or without the chords.
+	#asks if the user wants to play the generated improv with or without the chords.
 	def improv_or_chord () :
-		delay_print ("Do you want to hear the improvisation alone or with chords?\n")
+		delay_print ("\nDo you want to hear the improvisation alone or with chords?\n")
 		improv_chord = input ("Enter 'alone' or 'chord': ")
 		if str.lower(improv_chord) == "alone" :
 			ps.make_wav(notes, fn = "bebop.wav")
@@ -366,9 +388,10 @@ def main () :
 			mix()
 			playaudio("combined.wav")
 		else: 
-			delay_print ("Are you sure you entered a right command?")
+			delay_print ("Are you sure you entered a right command?\n")
 			improv_or_chord ()
 
+	#asks if the user wants to listen to the improvisation again
 	def playagain () :
 		clear()
 		delay_print ("Would you like to listen to the improvisation again?")
